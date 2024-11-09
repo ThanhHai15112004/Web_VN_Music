@@ -551,6 +551,7 @@ body {
     color: #ffffff;
     padding: 40px 20px;
     margin: 0 auto;
+    margin-top: 48px;
 }
 
 .footer-fixed{
@@ -585,4 +586,94 @@ body {
 .social-icon img {
     width: 30px;
     height: 30px;
+}
+
+/*Music Theme */
+.Music-theme-slider-container {
+    max-width: 1250px;
+}
+
+.music-theme-title-selector{
+    justify-content: space-between;
+}
+
+.music-theme-title{
+    font-size: 32px;
+}
+
+.music-theme-decs{
+    text-decoration: none;
+    color: #fff;
+}
+.music-theme-decs i{
+    font-size: 10px;
+}
+
+.music-theme-decs:hover{
+    color: #26B685;
+}
+
+.music-theme-playlist-container{
+    margin-right: auto;
+}
+
+.music-theme-playlist-list{
+    max-width: 320px;
+    width: auto;
+    height: auto;
+}
+
+.music-theme-playlist-list .music-theme-playlist-item-img{
+    width: 100%;
+    display: block; 
+}
+
+.music-theme-playlist-item{
+    background: #303b4a;
+    width: 100%;
+    height: auto;
+    padding: 16px;
+}
+
+.music-theme-playlist-item-title{
+    font-size: 18px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.music-theme-playlist-item-decs{
+    font-size: 14px;    
+    text-align: left;
+    margin-top: 8px;
+    opacity: 0.4;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+
+/*Album*/
+/*Pagination*/  
+.Pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+    gap: 12px;
+    font-size: 18px;
+}
+
+.Pagination a{
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.Pagination a:hover{
+    background-color: #26B685;
+    color: #fff;
+}
+
+.active-pagination{
+    background-color: #26B685;
+    color: #fff;
 }
