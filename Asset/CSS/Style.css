@@ -172,9 +172,7 @@ body {
 
 /* Sliders */
 .slider-container {
-    max-width: 800px;
-    width: 100%;
-    overflow: hidden;
+    max-width: 828px;
     border-radius: 10px;
     position: relative;
     margin: 0 auto;
@@ -182,11 +180,18 @@ body {
 
 .slider-wrapper {
     position: relative;
+    overflow: hidden;
     margin: 0 auto;
 }
 
-.slider-img-1 {
-    width: 100%;
+.slider-list {
+    display: flex;
+    transition: transform 0.5s;
+}
+
+.slider-list-img {
+    width: 100%; 
+    height: auto;
     border-radius: 10px;
 }
 
@@ -194,27 +199,27 @@ body {
 .arrow {
     position: absolute;
     top: 50%;
+    width: 100%; 
     transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrow-left,
+.arrow-right {
     background: rgba(0, 0, 0, 0.5);
     color: #ffffff;
     border-radius: 50%;
     padding: 10px;
     cursor: pointer;
-    transition: opacity 0.3s ease;
-    opacity: 0; 
+    transition: opacity 0.3s;
+    opacity: 0.5;
+    pointer-events: all;
 }
 
-.arrow-left {
-    left: 15px;
-}
-
-.arrow-right {
-    right: 15px;
-}
-
-
-.slider-wrapper:hover .arrow {
-    opacity: 1; 
+.arrow-left:hover,
+.arrow-right:hover {
+    opacity: 1;
 }
 
 /* Navigation Dots */
@@ -243,6 +248,12 @@ body {
 /* Content */
 /*Playlist hôm nay*/
 /* Phần tiêu đề và container playlist */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
 .playlist-section {
     max-width: 1000px;
     margin: 0 auto;
@@ -251,9 +262,8 @@ body {
 }
 
 .playlist-container {
-    width: 100%;
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    transition: transform 0.5s ease;
 }
 
 .playlist-item {    
@@ -263,12 +273,14 @@ body {
     overflow: hidden;
     text-align: center;
     padding: 10px 0;
+    text-decoration: none;
     margin: 0 5px; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .playlist-item:hover {
     transform: scale(1.05);
+    cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -283,7 +295,20 @@ body {
     font-weight: bold;
     margin: 10px 0;
     text-align: center;
-}   
+}
+
+button.left, button.right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
 
 /* Album Selection */
 /* Album title selector */
@@ -344,9 +369,16 @@ body {
     margin-top: 48px;
 }
 
-.playlist-container playlist-item-title{
-    padding: 12px;  
-    margin: 12px;
+.playlist-container .playlist-item-title{
+    padding: 4px 12px;  
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+.playlist-container .playlist-item-artist{
+    padding: 2px 12px; 
+    margin-bottom: 12px; 
+    opacity: 0.5;
 }
 
 /* video music */
@@ -374,49 +406,27 @@ body {
     display: flex;
 }
 
-.filter {
-    font-size: 16px;
-    color: #a9b3c1;
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
-    padding: 2px 12px;
-    margin-left: 12px;
-    margin-right: 12px;
-}
-
-.filter.active {
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.filter.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -4px;
-    height: 2px;
-    background-color: #ffffff;
-}
-
-.filter:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
 /* Video item styling */
 .video-item {
     margin: 10px;
     border-radius: 10px;
     overflow: hidden;
+    color: #fff;
     text-align: center;
+    text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .video-item:hover {
     transform: scale(1.05);
+    cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.playlist-item-artist:hover,
+.playlist-item-title:hover{
+    color: #21b685;
+    cursor: pointer;
 }
 
 .video-item img {
@@ -434,6 +444,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     margin-top: 48px;
+    color: #fff;
 }
 
 .section-title-music{
@@ -458,6 +469,7 @@ body {
     width: calc(50% - 10px);
     padding: 10px 0;
     border-bottom: 1px solid #2a2a3b; 
+    text-decoration: none;
 }
 
 .new-release-item img {
@@ -472,6 +484,7 @@ body {
     flex-direction: column;
     text-align: left;
     flex: 1;
+    padding: 0px 12px;
 }
 
 .song-title {
@@ -483,6 +496,13 @@ body {
 .song-artist {
     margin: 0;
     color: #a9b3c1;
+    opacity: 0.6;
+}
+
+.song-title:hover,
+.song-artist:hover{
+    color: #21b685;
+    cursor: pointer;
 }
 
 /* Artist Player Img*/
@@ -540,8 +560,9 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.partner-item img:hover {
-    
+.partner-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 /* Footer */
@@ -589,7 +610,7 @@ body {
 
 /*Music Theme */
 .Music-theme-slider-container {
-    max-width: 1250px;
+    max-width: 1170px;
 }
 
 .music-theme-title-selector{
@@ -632,6 +653,9 @@ body {
     width: 100%;
     height: auto;
     padding: 16px;
+    color: #fff;
+    text-decoration: none;
+    display: block;
 }
 
 .music-theme-playlist-item-title{
@@ -647,6 +671,11 @@ body {
     opacity: 0.4;
     font-weight: normal;
     line-height: 1.4;
+}
+
+.music-theme-playlist-item-title:hover,
+.music-theme-playlist-item-decs:hover{
+    color: #21b685;
 }
 
 
@@ -675,4 +704,34 @@ body {
 .active-pagination{
     background-color: #26B685;
     color: #fff;
+}
+
+/*Error*/
+.Error-selection{
+    display: flex;
+    justify-content: center;
+    margin-top: 84px;
+    margin-bottom: 200px;
+}
+
+.Error-selection img{
+    height: auto;
+}
+
+/*Artist*/
+.artist-playlist-item-title{
+    text-align: center !important;
+}
+
+.artist-list{
+    max-width: 1200px;
+}
+
+.artist-item img{
+    border-radius: 50%;
+    width: 100%;
+}
+
+.artist-playlist-item{
+    background-color: #192536;
 }
